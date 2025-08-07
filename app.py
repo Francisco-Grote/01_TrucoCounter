@@ -48,6 +48,7 @@ def boton_reiniciar():
 def guardar_nombre():
     operaciones.nombre = request.form["nombre_grupo"]
     return redirect(url_for("inicio"))
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    import os
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port, debug=False)
