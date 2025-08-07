@@ -47,14 +47,20 @@
             
             <a href="/boton_reiniciar"><button class="reiniciar_contador">🔄 Reiniciar Contadores</button></a>
     </div>
-<script>
+ <script>
         window.onload = function() {
+            const nombreGrupo = '{{ nombre_grupo }}';
             const modal = document.getElementById('modalNombre');
-            modal.classList.add('mostrar-modal');
             
-            const input = document.querySelector('.nombregrupoamigos');
-            if (input) {
-                input.focus();
+            if (!nombreGrupo || nombreGrupo.trim() === '') {
+                modal.classList.add('mostrar-modal');
+                
+                const input = document.querySelector('.nombregrupoamigos');
+                if (input) {
+                    setTimeout(() => input.focus(), 300);
+                }
+            } else {
+                modal.classList.add('hidden');
             }
         }
     </script>
