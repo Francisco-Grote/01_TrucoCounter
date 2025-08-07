@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/img/icon.png" type="img">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truco Counter</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="modal-overlay" id="modalNombre">
+            <div class="nombregrupomodal">
+                <h1>🎯 Ingresa el nombre de tu grupo!</h1>
+                <form action="/guardar_nombre" method="POST">
+                    <input type="text" class="nombregrupoamigos" name="nombre_grupo" required placeholder="Ej: Los Truchos">
+                    <button type="submit">✅ Confirmar</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="contador">
+            <h1>{{ nombre_grupo if nombre_grupo else 'TRUCO COUNTER' }}</h1>
+            
+            <div class="equipos-container">
+                <div class="equipo">
+                    <div class="nosotrostexto"><h1>NOS</h1></div>
+                    <div class="palitos-area numerosnosotros">{{ nosotros|safe }}</div>
+                    <div class="botones-equipo">
+                        <a href="/resta_nosotros"><button class="restanosotros">-</button></a>
+                        <a href="/suma_nosotros"><button class="sumanosotros">+</button></a>
+                    </div>
+                </div>
+                
+                <div class="equipo">
+                    <div class="ellostexto"><h1>ELLOS</h1></div>
+                    <div class="palitos-area numerosellos">{{ ellos|safe }}</div>
+                    <div class="botones-equipo">
+                        <a href="/resta_ellos"><button class="restaellos">-</button></a>
+                        <a href="/suma_ellos"><button class="sumaellos">+</button></a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/boton_reiniciar"><button class="reiniciar_contador">🔄 Reiniciar Contadores</button></a>
+    </div>
+
+    <script>
+        // Mostrar modal solo si no hay nombre del grupo
+        window.onload = function() {
+            const nombreGrupo = '{{ nombre_grupo }}';
+            const modal = document.getElementById('modalNombre');
+            
+            if (!nombreGrupo || nombreGrupo.trim() === '') {
+                modal.classList.add('mostrar-modal');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>
