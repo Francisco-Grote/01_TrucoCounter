@@ -49,4 +49,5 @@ def guardar_nombre():
     operaciones.nombre = request.form["nombre_grupo"]
     return redirect(url_for("inicio"))
 
-app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
