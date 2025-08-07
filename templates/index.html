@@ -47,17 +47,14 @@
             
             <a href="/boton_reiniciar"><button class="reiniciar_contador">🔄 Reiniciar Contadores</button></a>
     </div>
-
-    <script>
-        // Mostrar modal solo si no hay nombre del grupo
+<script>
         window.onload = function() {
-            const nombreGrupo = '{{ nombre_grupo }}';
             const modal = document.getElementById('modalNombre');
+            modal.classList.add('mostrar-modal');
             
-            if (!nombreGrupo || nombreGrupo.trim() === '') {
-                modal.classList.add('mostrar-modal');
-            } else {
-                modal.classList.add('hidden');
+            const input = document.querySelector('.nombregrupoamigos');
+            if (input) {
+                input.focus();
             }
         }
     </script>

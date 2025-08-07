@@ -8,20 +8,24 @@ def nombre_del_grupo():
     return nombre
 
 def suma_nosotros():
-        global total_nosotros
-        total_nosotros += 1
-        finalizar_partida_automaticamente()
+    global total_nosotros
+    total_nosotros += 1
+    finalizar_partida_automaticamente()
+
 def resta_nosotros():
-        global total_nosotros
+    global total_nosotros
+    if total_nosotros > 0:  # Evitar números negativos
         total_nosotros -= 1
-    
+
 def suma_ellos():
-        global total_ellos
-        total_ellos += 1
-        finalizar_partida_automaticamente()
+    global total_ellos
+    total_ellos += 1
+    finalizar_partida_automaticamente()
+
 def resta_ellos():
     global total_ellos
-    total_ellos -= 1
+    if total_ellos > 0:  # Evitar números negativos
+        total_ellos -= 1
 
 def boton_reiniciar():
     global total_nosotros, total_ellos
